@@ -2,11 +2,21 @@ footer {
     background-color: #EBEBEB;
 }
 
-.payment img {
+.pay-logos {
     width: 60px;
+    display: inline-block;
     margin-inline: 7px;
 }
 
-.download-info img {
+.payment img {
+    width: 100%;
+}
+
+.apps {
     width: 120px;
+    display: inline-block;
+}
+
+.download-info img {
+    width: 100%;
 }

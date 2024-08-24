@@ -1,1 +1,23 @@
-<p>signup works!</p>
+<div class="signup m-5">
+    <div class="w-75 m-auto">
+        <h3 class="mx-5">Register Now:</h3>
+        <form class="mx-5" [formGroup]="register" (ngSubmit)="sendData()">
+            <input type="text" formControlName="name" class="form-control my-4" placeholder="Type your name...">
+            <alertError [formName]="register" controlName="name" />
+            <input type="email" formControlName="email" class="form-control my-4" placeholder="Type your email...">
+            <alertError [formName]="register" controlName="email" />
+            <input type="password" formControlName="password" class="form-control my-4"
+                placeholder="Type your password...">
+            <alertError [formName]="register" controlName="password" />
+
+            <input type="password" formControlName="rePassword" class="form-control my-4"
+                placeholder="Rewrite password...">
+            <alertError [formName]="register" controlName="rePassword" />
+
+
+            <button class="btn bg-main w-25 ms-auto d-block text-white" [disabled]="register.invalid">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
