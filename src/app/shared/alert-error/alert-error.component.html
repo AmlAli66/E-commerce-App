@@ -1,4 +1,4 @@
-@if (formName.get(controlName)?.errors && formName.get(controlName)?.touched) {
+@if (formName.get(controlName)?.errors &&(formName.get(controlName)?.touched||formName.get(controlName)?.dirty)){
 <div class="text-danger">
     <ul class="m-0 list-unstyled">
         @if (formName.get(controlName)?.getError('required')) {

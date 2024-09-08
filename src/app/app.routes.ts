@@ -10,20 +10,25 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CartComponent } from './components/cart/cart.component';
+import { authGuard } from './core/guards/auth.guard';
+import { isLoggedInGuard } from './core/guards/is-logged-in.guard';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AuthLayoutComponent,
+    component: AuthLayoutComponent, canActivate: [isLoggedInGuard],
     children: [
-      { path: '', redirectTo: 'signin', pathMatch: 'full' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: SigninComponent, title: 'Login Page' },
       { path: 'signup', component: SignupComponent, title: 'Sign up  Page' },
+      { path: 'forget', component: ForgetPasswordComponent, title: 'Forget Password' },
+      // { path: '**', component: NotFoundComponent, title: 'Not Found Page' },
     ],
   },
   {
     path: '',
-    component: MainLayoutComponent,
+    component: MainLayoutComponent, canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, title: 'Home' },
@@ -32,7 +37,8 @@ export const routes: Routes = [
       { path: 'products', component: ProductsComponent, title: 'Products' },
       { path: 'orders', component: OrdersComponent, title: 'Orders' },
       { path: 'cart', component: CartComponent, title: 'Cart' },
+      // { path: '**', component: NotFoundComponent, title: 'Not Found Page' },
     ],
   },
   { path: '**', component: NotFoundComponent, title: 'Not Found Page' },
-];
+]; 
