@@ -12,4 +12,8 @@ export class ProductsService {
   getProducts = (): Observable<any> => {
     return this._HttpClient.get(baseUrl + 'api/v1/products')
   }
+
+  getProduct = (id: string): Observable<any> => {
+    return this._HttpClient.get(baseUrl + `api/v1/products/${id}`)
+  }
 }

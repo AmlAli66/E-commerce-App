@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'ngx-toastr/toastr';
 
 :root {
   --input-shadow: 0 0 0 .25rem #0aad0a48;
@@ -88,4 +89,13 @@ a:hover {
   height: 5px;
   border-radius: 50%;
   margin-inline: 8px;
+}
+
+.main-border {
+  border: 1px solid var(--main-color);
+}
+
+.main-border:hover {
+  background-color: var(--main-color);
+  color: #fff;
 }

@@ -13,9 +13,15 @@ export class AuthService {
 
   constructor(private _HttpClient: HttpClient) { }
   private readonly _Router = inject(Router)
+
   signup = (user: any): Observable<any> => {
     return this._HttpClient.post(baseUrl + 'api/v1/auth/signup', user)
   }
+
+
+
+
+
   signin = (user: any): Observable<any> => {
     return this._HttpClient.post(baseUrl + 'api/v1/auth/signin', user)
   }

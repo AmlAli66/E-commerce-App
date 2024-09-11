@@ -13,6 +13,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { authGuard } from './core/guards/auth.guard';
 import { isLoggedInGuard } from './core/guards/is-logged-in.guard';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { DetailsComponent } from './components/details/details.component';
+import { AddressComponent } from './components/address/address.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +39,8 @@ export const routes: Routes = [
       { path: 'products', component: ProductsComponent, title: 'Products' },
       { path: 'orders', component: OrdersComponent, title: 'Orders' },
       { path: 'cart', component: CartComponent, title: 'Cart' },
+      { path: 'details/:id', component: DetailsComponent, title: 'Details' },
+      { path: 'address/:id', component: AddressComponent, title: 'Details' },
       // { path: '**', component: NotFoundComponent, title: 'Not Found Page' },
     ],
   },

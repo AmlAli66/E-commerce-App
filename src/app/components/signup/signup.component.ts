@@ -17,7 +17,11 @@ import { Router } from '@angular/router';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
+
+
   private readonly _AuthService = inject(AuthService);
+
+
   private readonly _Router = inject(Router);
   isBtnSubmit: boolean = false;
   registerErrorMessage: string = "";
