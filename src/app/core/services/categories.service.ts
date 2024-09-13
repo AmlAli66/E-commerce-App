@@ -11,4 +11,8 @@ export class CategoriesService {
   getCategories = (): Observable<any> => {
     return this._HttpClient.get(baseUrl + 'api/v1/categories')
   }
+
+  getCategory = (id: string): Observable<any> => {
+    return this._HttpClient.get(baseUrl + `api/v1/subcategories/${id}`)
+  }
 }

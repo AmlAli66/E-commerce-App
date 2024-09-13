@@ -4,11 +4,13 @@ import { Cart } from '../../core/intarfaces/cart';
 import { MainBtnComponent } from "../../shared/main-btn/main-btn.component";
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [MainBtnComponent, RouterLink],
+  imports: [MainBtnComponent, RouterLink, TranslateModule, CurrencyPipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -44,6 +46,7 @@ export class CartComponent {
     this._CartService.removeItem(productId).subscribe({
       next: (res) => {
         // this.getLoggedUserCart();
+        this._CartService.cartCounter.next(res.numOfCartItems)
         this.cart = res
         this.toastr.success('Deleted successfully', '', {
           progressBar: true,
@@ -65,9 +68,7 @@ export class CartComponent {
           progressBar: true,
           timeOut: 1000
         });
-      },
-      error: (err) => {
-        console.log(err);
+        this.getLoggedUserCart();
       }
     })
   }

@@ -1,0 +1,12 @@
+.upBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0aad0a;
+    color: #fff;
+
+    &:hover {
+        background-color: #025e02;
+        color: #fff;
+    }
+}

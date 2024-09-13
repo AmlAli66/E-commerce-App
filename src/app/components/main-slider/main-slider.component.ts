@@ -21,6 +21,7 @@ export class MainSliderComponent {
     autoplayTimeout: 1000,
     autoplayHoverPause: true,
     smartSpeed: 1000,
+    rtl: true,
     slideTransition: 'linear',
     responsive: {
       0: {

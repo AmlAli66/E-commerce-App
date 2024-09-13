@@ -1,0 +1,31 @@
+@if (wishlist.count!=0) {
+<div class="container my-5 bg-main-light px-5 py-4 rounded-4">
+    <h2>Wishlist:</h2>
+    <div class="cart-info d-flex justify-content-between align-items-center my-3">
+        <p class="text-main fs-5">cart.items-num<span>{{wishlist.count}}</span> </p>
+    </div>
+
+    @for (product of wishlist.data; track $index) {
+    <div class="row my-2 border-bottom py-2">
+        <div class="col-md-1">
+            <img [src]="product.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-11 d-flex  justify-content-between align-items-center cart-product-info">
+            <div class="w-75">
+                <h4 class="px-2">{{product.title}}</h4>
+                <p class="text-main px-2">Price:{{product.price}}</p>
+                <button type="button" class=" btn text-danger p-2 " (click)="removeProduct(product._id)">
+                    <i class="fa-regular fa-trash-can me-1"></i>
+                    Remove</button>
+            </div>
+            <div class="count">
+                <app-main-btn (click)="addToCart(product._id)">Add to cart</app-main-btn>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+}
+@else{
+<h2 class="text-main my-5 text-center py-5 fw-semibold">Wishlist Is Empty</h2>
+}

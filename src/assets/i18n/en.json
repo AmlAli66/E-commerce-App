@@ -1,0 +1,19 @@
+{
+    "navbar": {
+        "home": "Home",
+        "categories": "Categories",
+        "brands": "Brands",
+        "products": "Products",
+        "logout": "Logout",
+        "wishlist": "wishlist",
+        "lang": "En"
+    },
+    "categorySlider": {
+        "title": "Shop Popular Categories:"
+    },
+    "cart": {
+        "cart-title": "Shop Cart :",
+        "cart-price": "Total Cart Price :",
+        "items-num": "Total Number of Items :"
+    }
+}

@@ -10,13 +10,7 @@ export class OrderService {
 
   constructor(private _HttpClient: HttpClient) { }
   createSession = (cardId: string, shippingAddress: object): Observable<any> => {
-    return this._HttpClient.post(baseUrl + 'api/v1/auth/orders/checkout-session/' + cardId,
-      { shippingAddress },
-      {
-        headers: {
-          token: localStorage.getItem('token')!
-        }
-      }
+    return this._HttpClient.post(baseUrl + 'api/v1/orders/checkout-session/' + cardId + "?url=http://localhost:49215", { shippingAddress }
     )
   }
 }

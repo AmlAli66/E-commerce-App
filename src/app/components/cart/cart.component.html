@@ -1,10 +1,11 @@
 @if (!isLoading) {
 @if (cart.numOfCartItems!=0) {
 <div class="container my-5 bg-main-light px-5 py-4 rounded-4">
-    <h2>Shop Cart :</h2>
+    <h2>{{"cart.cart-title"|translate}}</h2>
     <div class="cart-info d-flex justify-content-between align-items-center my-3">
-        <p class="text-main fs-5">Total Cart Price : <span>{{cart.data.totalCartPrice}}</span> </p>
-        <p class="text-main fs-5">Total Number of Items : <span>{{cart.numOfCartItems}}</span> </p>
+        <p class="text-main fs-5">{{"cart.cart-price"|translate}}<span>{{cart.data.totalCartPrice}}</span>
+        </p>
+        <p class="text-main fs-5">{{"cart.items-num"|translate}} <span>{{cart.numOfCartItems}}</span> </p>
     </div>
 
     @for (product of cart.data.products; track $index) {

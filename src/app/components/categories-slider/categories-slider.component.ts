@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CategoriesService } from '../../core/services/categories.service';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Category } from '../../core/intarfaces/product';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-categories-slider',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule, TranslateModule],
   templateUrl: './categories-slider.component.html',
   styleUrl: './categories-slider.component.scss'
 })
@@ -29,6 +30,7 @@ export class CategoriesSliderComponent implements OnInit {
     touchDrag: false,
     pullDrag: false,
     dots: false,
+    rtl: true,
     navSpeed: 700,
     navText: [],
     responsive: {

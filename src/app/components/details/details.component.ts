@@ -44,7 +44,7 @@ export class DetailsComponent {
   getStars(rating: number) {
     let stars = [];
     for (let i = 1; i <= rating; i++) {
-      console.log(rating);
+      // console.log(rating);
       stars.push(i)
     }
     return stars;
@@ -53,7 +53,8 @@ export class DetailsComponent {
   addToCart = (productId: string) => {
     this._CartService.addProductToCart(productId).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
+        this._CartService.cartCounter.next(res.numOfCartItems)
         this.toastr.success('Added to cart successfully', '', {
           progressBar: true,
           progressAnimation: 'increasing',

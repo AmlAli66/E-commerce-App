@@ -7,30 +7,45 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+            <ul class="navbar-nav  mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="home" routerLinkActive="navbar-active">Home</a>
+                    <a class="nav-link" routerLink="/home"
+                        routerLinkActive="navbar-active">{{"navbar.home"|translate}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="categories" routerLinkActive="navbar-active">Categories</a>
+                    <a class="nav-link" routerLink="/categories"
+                        routerLinkActive="navbar-active">{{"navbar.categories"|translate}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="products" routerLinkActive="navbar-active">Products</a>
+                    <a class="nav-link" routerLink="/products"
+                        routerLinkActive="navbar-active">{{"navbar.products"|translate}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="brands" routerLinkActive="navbar-active">Brands</a>
+                    <a class="nav-link" routerLink="/brands"
+                        routerLinkActive="navbar-active">{{"navbar.brands"|translate}}</a>
                 </li>
 
             </ul>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav  mb-2 mb-lg-0 d-flex align-items-center">
+                <li class="nav-item dropdown mx-2 px-1">
+                    <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-globe px-1"></i>
+                        {{"navbar.lang"|translate}}
+                    </span>
+                    <ul class="dropdown-menu">
+                        <li><a [class.bg-main]="_TranslateService.currentLang=='en'" class="dropdown-item"
+                                (click)="selectLang('en')">English</a></li>
+                        <li><a [class.bg-main]="_TranslateService.currentLang=='ar'" class="dropdown-item"
+                                (click)="selectLang('ar')">عربي</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link position-relative p-1 m-1" routerLink="wishList">
-                        WishList
+                    <a class="nav-link position-relative p-1 m-1" routerLink="/wishList">
+                        {{"navbar.wishlist"|translate}}
                         <i class="fa-regular fa-heart"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             5
-                            <span class="visually-hidden">unread messages</span>
                         </span>
                     </a>
                 </li>
@@ -38,13 +53,12 @@
                     <a class="nav-link position-relative p-1 my-1 mx-2" routerLink="cart">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            9
-                            <span class="visually-hidden">unread messages</span>
+                            {{counter}}
                         </span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link p-1 m-1" (click)="logout()">Logout</a>
+                    <a class="nav-link p-1 m-1" (click)="logout()">{{"navbar.logout"|translate}}</a>
                 </li>
             </ul>
         </div>

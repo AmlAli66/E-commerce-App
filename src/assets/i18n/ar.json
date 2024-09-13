@@ -1,0 +1,19 @@
+{
+    "navbar": {
+        "home": "الرئيسية",
+        "categories": "الفئات",
+        "brands": "الماركات",
+        "products": "المنتجات",
+        "logout": "تسجيل الخروج",
+        "wishlist": "قائمة الرغبات",
+        "lang": "ع"
+    },
+    "categorySlider": {
+        "title": "تسوق الفئات الشهيرة:"
+    },
+    "cart": {
+        "cart-title": "عربة التسوق:",
+        "cart-price": "إجمالي سعر العربة:",
+        "items-num": "إجمالي عدد العناصر:"
+    }
+}
