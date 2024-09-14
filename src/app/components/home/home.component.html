@@ -30,8 +30,12 @@
                 <div class="my-2 d-flex justify-content-between align-items-center g-0">
                     <app-main-btn (click)="addToCart(product._id)">Add to cart</app-main-btn>
                     <div class="addToWishList" (click)="addToWishList(product._id)">
-                        <!-- <i class="fa-regular fa-heart text-main fa-xl "></i> -->
+                        @if (isItemInWishlist(product._id)) {
+
                         <i class="fa-solid fa-heart text-main fa-xl"></i>
+                        }@else {
+                        <i class="fa-regular fa-heart text-main fa-xl "></i>
+                        }
                         <!-- <i class="fa-solid fa-heart-circle-plus"></i> -->
                     </div>
 

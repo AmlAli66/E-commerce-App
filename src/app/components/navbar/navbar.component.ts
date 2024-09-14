@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { myTranslationService } from '../../core/services/translation.service';
 import { CartService } from '../../core/services/cart.service';
+import { WishListService } from '../../core/services/wish-list.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,8 +15,10 @@ import { CartService } from '../../core/services/cart.service';
 })
 export class NavbarComponent {
   counter: number = 0;
+  wishlistCounter: number = 0;
   private readonly _myTranslationService = inject(myTranslationService);
-  private readonly _CartService = inject(CartService)
+  private readonly _CartService = inject(CartService);
+  private readonly _WishListService = inject(WishListService);
   readonly _TranslateService = inject(TranslateService);
   constructor(private _AuthService: AuthService) { }
   logout() {
@@ -29,7 +32,15 @@ export class NavbarComponent {
         this.counter = counter
       }
     })
+
+
     this.getLoggedUserCart()
+    this._WishListService.wishlistCounter.subscribe({
+      next: (wishlistCounter) => {
+        this.wishlistCounter = wishlistCounter
+      }
+    })
+    this.getLoggedUserWishlist();
   }
 
   getLoggedUserCart = () => {
@@ -37,10 +48,16 @@ export class NavbarComponent {
       {
         next: (res) => {
           this._CartService.cartCounter.next(res.numOfCartItems)
+        }
+      }
+    )
+  }
 
-        },
-        error: (err) => {
-          console.error(err);
+  getLoggedUserWishlist = () => {
+    this._WishListService.getLoggedUserWishlist().subscribe(
+      {
+        next: (res) => {
+          this._WishListService.wishlistCounter.next(res.count)
         }
       }
     )

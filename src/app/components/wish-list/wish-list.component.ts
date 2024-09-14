@@ -5,6 +5,8 @@ import { Wishlist } from '../../core/intarfaces/wishlist';
 import { MainBtnComponent } from "../../shared/main-btn/main-btn.component";
 import { CartService } from '../../core/services/cart.service';
 import { Subscription } from 'rxjs';
+import { ProductsService } from '../../core/services/products.service';
+import { Product } from '../../core/intarfaces/product';
 
 @Component({
   selector: 'app-wish-list',
@@ -15,11 +17,17 @@ import { Subscription } from 'rxjs';
 })
 export class WishListComponent {
   wishlist: Wishlist = {} as Wishlist;
+  allProducts: Product[] = []
   cancelSubscription: Subscription = new Subscription()
   private readonly _WishListService = inject(WishListService);
   private readonly toastr = inject(ToastrService);
   private readonly _CartService = inject(CartService);
+  private readonly _ProductsService = inject(ProductsService);
 
+  ngOnInit(): void {
+    this.getLoggedUserWishlist();
+    this.getAllProducts();
+  }
 
   getLoggedUserWishlist = () => {
     this._WishListService.getLoggedUserWishlist().subscribe(
@@ -34,16 +42,23 @@ export class WishListComponent {
       }
     )
   }
-
-  ngOnInit(): void {
-    this.getLoggedUserWishlist()
+  getAllProducts = () => {
+    this.cancelSubscription = this._ProductsService.getProducts().subscribe({
+      next: (res) => {
+        this.allProducts = res.data;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
   }
+
 
   removeProduct(productId: string) {
     this._WishListService.removeProduct(productId).subscribe({
       next: (res) => {
         this.getLoggedUserWishlist();
-        this._WishListService.wishlistCounter.next(res.numOfCartItems)
+        this._WishListService.wishlistCounter.next(res.count)
         this.wishlist = res
         this.toastr.success('Deleted successfully', '', {
           progressBar: true,

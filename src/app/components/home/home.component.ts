@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { WishListService } from '../../core/services/wish-list.service';
+import { Wishlist } from '../../core/intarfaces/wishlist';
 
 @Component({
   selector: 'app-home',
@@ -26,25 +27,46 @@ import { WishListService } from '../../core/services/wish-list.service';
 export class HomeComponent implements OnInit {
   term: string = ""
   allProducts: Product[] = [];
+  wishlist: Wishlist = {} as Wishlist;
+
   cancelSubscription: Subscription = new Subscription()
   private readonly toastr = inject(ToastrService);
   private readonly _WishListService = inject(WishListService);
   constructor(private _ProductsService: ProductsService, private token: AuthService, private _CartService: CartService) {
     this.token.saveUserData()
   }
+
+  ngOnInit(): void {
+    this.getProducts();
+    this.getLoggedUserWishlist();
+  }
+
   getProducts = () => {
     this.cancelSubscription = this._ProductsService.getProducts().subscribe({
       next: (res) => {
         this.allProducts = res.data;
-      },
-      error: (error) => {
-        console.log(error);
       }
     })
   }
-  ngOnInit(): void {
-    this.getProducts();
+  getLoggedUserWishlist = () => {
+    this._WishListService.getLoggedUserWishlist().subscribe(
+      {
+        next: (res) => {
+          this.wishlist = res;
+        }
+      }
+    )
   }
+
+  isItemInWishlist(productId: string): boolean {
+    if (!this.wishlist.data) {
+      return false;
+    }
+    return this.wishlist.data.some(product => product._id === productId);
+  }
+
+
+
   addToCart = (productId: string) => {
     this.cancelSubscription = this._CartService.addProductToCart(productId).subscribe({
       next: (res) => {
@@ -55,28 +77,25 @@ export class HomeComponent implements OnInit {
           progressAnimation: 'increasing',
           timeOut: 1000
         });
-      },
-      error: (err) => {
-        console.log(err);
       }
     });
   }
+
   addToWishList = (productId: string) => {
     this.cancelSubscription = this._WishListService.addToWishList(productId).subscribe({
       next: (res) => {
-        console.log(res);
+        this.isItemInWishlist(productId);
+        this.getLoggedUserWishlist();
         this._CartService.cartCounter.next(res.numOfCartItems)
         this.toastr.success(res.message, '', {
           progressBar: true,
           progressAnimation: 'increasing',
           timeOut: 1000
         });
-      },
-      error: (err) => {
-        console.log(err);
       }
     });
   }
+
   ngOnDestroy(): void {
     this.cancelSubscription.unsubscribe();
   }

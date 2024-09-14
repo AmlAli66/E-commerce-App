@@ -15,5 +15,9 @@
         "cart-title": "Shop Cart :",
         "cart-price": "Total Cart Price :",
         "items-num": "Total Number of Items :"
+    },
+    "wishlist": {
+        "wishlist-title": "Wishlist :",
+        "items-num": "Total Number of Items :"
     }
 }

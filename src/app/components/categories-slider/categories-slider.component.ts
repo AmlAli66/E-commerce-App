@@ -17,7 +17,7 @@ export class CategoriesSliderComponent implements OnInit {
   ngOnInit(): void {
     this._CategoriesService.getCategories().subscribe({
       next: (res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.categories = res.data;
       }
     }

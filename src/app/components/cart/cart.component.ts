@@ -45,7 +45,7 @@ export class CartComponent {
   deleteItem(productId: string) {
     this._CartService.removeItem(productId).subscribe({
       next: (res) => {
-        // this.getLoggedUserCart();
+        this.getLoggedUserCart();
         this._CartService.cartCounter.next(res.numOfCartItems)
         this.cart = res
         this.toastr.success('Deleted successfully', '', {
