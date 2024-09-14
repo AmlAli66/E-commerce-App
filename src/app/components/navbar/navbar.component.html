@@ -42,7 +42,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link position-relative p-1 m-1" routerLink="/wishList">
-                        {{"navbar.wishlist"|translate}}
+                        <!-- {{"navbar.wishlist"|translate}} -->
                         <i class="fa-regular fa-heart"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{wishlistCounter}}
@@ -58,7 +58,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link p-1 m-1" (click)="logout()">{{"navbar.logout"|translate}}</a>
+                    <a class="nav-link p-1 m-1" (click)="logout()" type="button" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" data-bs-title="Logout">{{"navbar.logout"|translate}} </a>
                 </li>
             </ul>
         </div>

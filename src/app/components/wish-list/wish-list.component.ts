@@ -7,11 +7,12 @@ import { CartService } from '../../core/services/cart.service';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../../core/services/products.service';
 import { Product } from '../../core/intarfaces/product';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wish-list',
   standalone: true,
-  imports: [MainBtnComponent],
+  imports: [MainBtnComponent, TranslateModule],
   templateUrl: './wish-list.component.html',
   styleUrl: './wish-list.component.scss'
 })

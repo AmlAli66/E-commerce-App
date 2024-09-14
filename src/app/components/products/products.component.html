@@ -1,6 +1,10 @@
 <div class="container my-5">
+    <div class="search d-flex align-items-center justify-content-center gap-3">
+        <input type="text" class="form-control my-5  w-50" [(ngModel)]="term" placeholder="search here... ">
+        <i class="fa-solid fa-magnifying-glass text-main fs-4"></i>
+    </div>
     <div class="row gy-3">
-        @for (product of allProducts; track $index) {
+        @for (product of allProducts|search:term; track $index) {
         <div class="col-md-2">
             <div class="product p-2 ">
                 <img [src]="product.imageCover" class="w-100" alt="">

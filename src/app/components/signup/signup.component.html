@@ -1,35 +1,35 @@
 <div class="signup m-5">
     <div class="w-75 m-auto">
-        <h3 class="mx-5">Register Now:</h3>
+        <h3 class="mx-5">{{"auth.register"|translate}}</h3>
         <form class="mx-5" [formGroup]="register" (ngSubmit)="sendData()">
             <input [ngClass]="{
                 'is-valid': !register.get('name')?.errors && (register.get('name')?.touched||register.get('name')?.dirty),
                 'is-invalid':register.get('name')?.errors && (register.get('name')?.touched||register.get('name')?.dirty),
-            }" type="text" formControlName="name" class="form-control my-4" placeholder="Type your name...">
+            }" type="text" formControlName="name" class="form-control my-4" placeholder="{{'auth.name'|translate}}">
             <alertError [formName]="register" controlName="name" />
             <input [ngClass]="{
                 'is-valid': !register.get('email')?.errors && (register.get('email')?.touched||register.get('email')?.dirty),
                 'is-invalid':register.get('email')?.errors && (register.get('email')?.touched||register.get('email')?.dirty),
-            }" type="email" formControlName="email" class="form-control my-4" placeholder="Type your email...">
+            }" type="email" formControlName="email" class="form-control my-4" placeholder="{{'auth.email'|translate}}">
             <alertError [formName]="register" controlName="email" />
             <input [ngClass]="{
                 'is-valid': !register.get('password')?.errors && (register.get('password')?.touched||register.get('password')?.dirty),
                 'is-invalid':register.get('password')?.errors && (register.get('password')?.touched||register.get('password')?.dirty),
             }" type="password" formControlName="password" class="form-control my-4"
-                placeholder="Type your password...">
+                placeholder="{{'auth.pass'|translate}}">
             <alertError [formName]="register" controlName="password" />
             <input [ngClass]="{
                 'is-valid': !register.getError('mismatch') &&( register.get('rePassword')?.touched ||register.get('rePassword')?.dirty),
                 'is-invalid':register.getError('mismatch') &&( register.get('rePassword')?.touched ||register.get('rePassword')?.dirty),
             }" type="password" formControlName="rePassword" class="form-control my-4"
-                placeholder="Rewrite password...">
+                placeholder="{{'auth.rePass'|translate}}">
             <alertError [formName]="register" controlName="rePassword" />
             <div class="text-danger my-3">
                 {{registerErrorMessage}}
             </div>
             <button class="btn bg-main w-25 ms-auto d-block text-white" [disabled]="register.invalid||isBtnSubmit">
                 @if (!isBtnSubmit) {
-                Register
+                {{"auth.register-btn"|translate}}
                 }@else{
 
                 <i class="fa-solid fa-spinner fa-spin"></i>

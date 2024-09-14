@@ -19,5 +19,23 @@
     "wishlist": {
         "wishlist-title": "Wishlist :",
         "items-num": "Total Number of Items :"
+    },
+    "auth": {
+        "login": "Login Now:",
+        "register": "Register Now:",
+        "login-btn": "login",
+        "register-btn": "Register",
+        "forgot": "Forget Password ?",
+        "name": "Type your name...",
+        "email": "Type your email...",
+        "pass": "Type your password...",
+        "rePass": "Rewrite your password..."
+    },
+    "footer": {
+        "title": "Get the FreshCart app",
+        "p": "We will send you a link,open it on your phone to download the app.",
+        "btn": "Share App Link",
+        "pay": "Payment Partners",
+        "store": "Get deliveries with FreshCart"
     }
 }

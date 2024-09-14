@@ -1,8 +1,8 @@
 @if (wishlist.count!=0) {
 <div class="container my-5 bg-main-light px-5 py-4 rounded-4">
-    <h2>Wishlist:</h2>
+    <h2>{{"wishlist.wishlist-title"|translate}}</h2>
     <div class="cart-info d-flex justify-content-between align-items-center my-3">
-        <p class="text-main fs-5">cart.items-num<span>{{wishlist.count}}</span> </p>
+        <p class="text-main fs-5">{{"wishlist.items-num"|translate}}<span>{{wishlist.count}}</span> </p>
     </div>
 
     @for (product of wishlist.data; track $index) {

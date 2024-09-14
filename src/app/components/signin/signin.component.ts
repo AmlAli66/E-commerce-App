@@ -6,11 +6,12 @@ import { AuthService } from '../../core/services/auth.service';
 import { signupValidators } from '../../shared/validators/register-validator';
 import { AlertErrorComponent } from "../../shared/alert-error/alert-error.component";
 import { NgClass } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, AlertErrorComponent, NgClass, RouterLink, TranslateModule],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss'
 })
